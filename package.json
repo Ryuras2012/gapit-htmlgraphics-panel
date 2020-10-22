@@ -25,6 +25,8 @@
     "@grafana/toolkit": "7.2.0",
     "@grafana/ui": "7.2.0",
     "@monaco-editor/react": "^3.6.3",
-    "copy-webpack-plugin": "^6.2.1"
+    "@types/prismjs": "^1.16.1",
+    "prismjs": "^1.22.0",
+    "react-simple-code-editor": "^0.11.0"
   }
 }

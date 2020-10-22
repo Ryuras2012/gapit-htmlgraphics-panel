@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StandardEditorProps } from '@grafana/data';
 import { OptionsInterface, EditorLanguageType, EditorCodeType } from './types';
-import { TextPanelEditor } from './TextPanelEditor';
+import { CodeEditor } from './CodeEditor';
 import { Switch, Label } from '@grafana/ui';
 import { SimpleOptions } from './SimpleOptions';
 
@@ -49,13 +49,14 @@ export const PanelOptionCodeData: React.FC<Props> = ({ value, item, onChange }) 
       <Switch value={advancedMode} onChange={() => setAdvancedMode(!advancedMode)} css={{}}></Switch>
       <br />
       {advancedMode ? (
-        <TextPanelEditor
-          language={item.settings?.language}
-          value={value}
-          onChange={code => {
-            onChange(code);
+        <div
+          style={{
+            height: '33vh',
+            overflow: 'scroll',
           }}
-        />
+        >
+          <CodeEditor value={value} language={item.settings?.language} onChange={onChange}></CodeEditor>
+        </div>
       ) : (
         <SimpleCodeData value={value} onChange={onChange} />
       )}

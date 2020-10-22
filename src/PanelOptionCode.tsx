@@ -1,6 +1,6 @@
 import React from 'react';
 import { StandardEditorProps } from '@grafana/data';
-import { TextPanelEditor } from 'TextPanelEditor';
+import { CodeEditor } from './CodeEditor';
 import { EditorLanguageType, EditorCodeType } from 'types';
 
 interface Settings {
@@ -10,5 +10,14 @@ interface Settings {
 interface Props extends StandardEditorProps<EditorCodeType, Settings> {}
 
 export const PanelOptionCode: React.FC<Props> = ({ value, item, onChange }) => {
-  return <TextPanelEditor language={item.settings?.language} value={value} onChange={code => onChange(code)} />;
+  return (
+    <div
+      style={{
+        height: '33vh',
+        overflow: 'scroll',
+      }}
+    >
+      <CodeEditor value={value} language={item.settings?.language} onChange={onChange}></CodeEditor>
+    </div>
+  );
 };
